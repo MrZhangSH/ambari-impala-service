@@ -5,23 +5,19 @@ IMPALA_BACKEND_PORT=22000
 IMPALA_LOG_DIR={{impala_log_dir}}
 IMPALA_SCRATCH_DIR={{impala_scratch_dir}}
 MEM_LIMIT={{mem_limit}}
+FAIR_SCHEDULER_ALLOCATION_PATH={{fair_scheduler_allocation_path}}
+LLAMA_SITE_PATH={{llama_site_path}}
 
 IMPALA_CATALOG_ARGS=" \
     -log_dir=${IMPALA_LOG_DIR} \
-    -state_store_host=${IMPALA_STATE_STORE_HOST} \
-        {% if security_enabled %}
-    -kerberos_reinit_interval=60 \
-    -principal=impala/{{current_host_name}}@{{realm_name}} \
-    -keytab_file=/etc/security/keytabs/impala.service.keytab \
-        {% endif %}
 	"
 IMPALA_STATE_STORE_ARGS=" \
     -log_dir=${IMPALA_LOG_DIR} \
     -state_store_port=${IMPALA_STATE_STORE_PORT} \
 	{% if security_enabled %}
     -kerberos_reinit_interval=60 \
-    -principal=impala/{{current_host_name}}@{{realm_name}} \
-    -keytab_file=/etc/security/keytabs/impala.service.keytab \
+    -principal=impala/{{current_host_name}}@EXAMPLE.COM \
+    -keytab_file=/etc/security/keytabs/impala-http.keytab \
 	{% endif %}
 	"
 IMPALA_SERVER_ARGS=" \
@@ -33,10 +29,12 @@ IMPALA_SERVER_ARGS=" \
     -use_statestore \
     -state_store_host=${IMPALA_STATE_STORE_HOST} \
     -be_port=${IMPALA_BACKEND_PORT} \
+    -fair_scheduler_allocation_path=${FAIR_SCHEDULER_ALLOCATION_PATH} \
+    -llama_site_path=${LLAMA_SITE_PATH} \
 	{% if security_enabled %}
     -kerberos_reinit_interval=60 \
-    -principal=impala/{{current_host_name}}@{{realm_name}} \
-    -keytab_file=/etc/security/keytabs/impala.service.keytab \
+    -principal=impala/{{current_host_name}}@EXAMPLE.COM \
+    -keytab_file=/etc/security/keytabs/impala-http.keytab \
 	{% endif %}
 	"
 
