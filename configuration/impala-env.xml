@@ -35,6 +35,18 @@
         <description>impala group</description>
     </property>
 	
+	<property>
+		<name>fair_scheduler_allocation_path</name>
+		<value>/etc/impala/conf/fair-scheduler.xml</value>
+	</property>
 	
-
+	<property>
+		<name>llama_site_path</name>
+		<value>/etc/impala/conf/llama-site.xml</value>
+	</property>
+	
+	<property>
+		<name>user_group</name>
+		<value>hadoop</value>
+	</property>
 </configuration>

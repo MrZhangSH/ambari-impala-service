@@ -1,0 +1,21 @@
+<allocations>
+    <queue name="root">
+        <aclSubmitApps> </aclSubmitApps>
+        <queue name="default">
+            <maxResources>38000 mb, 0 vcores</maxResources>
+            <aclSubmitApps>*</aclSubmitApps>
+        </queue>
+        <queue name="development">
+            <maxResources>200000 mb, 0 vcores</maxResources>
+            <aclSubmitApps>hue,hdfs</aclSubmitApps>
+        </queue>
+        <queue name="production">
+            <maxResources>100000 mb, 0 vcores</maxResources>
+            <aclSubmitApps>root</aclSubmitApps>
+        </queue>
+    </queue>
+    <queuePlacementPolicy>
+        <rule name="specified" create="false"/>
+        <rule name="default" />
+    </queuePlacementPolicy>
+</allocations>
