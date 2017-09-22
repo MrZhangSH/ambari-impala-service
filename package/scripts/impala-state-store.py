@@ -10,7 +10,7 @@ class StateStore(ImpalaBase):
         # Install packages listed in metainfo.xml
         self.install_packages(env)
         self.installImpala(env)
-        Execute("yum -y install python-devel openssl-devel python-pip cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-devel")
+        #Execute("yum -y install python-devel openssl-devel python-pip cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-devel")
         self.configure(env)
 
     def configure(self, env):
