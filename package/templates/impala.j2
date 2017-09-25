@@ -36,7 +36,7 @@ IMPALA_SERVER_ARGS=" \
     -state_store_host=${IMPALA_STATE_STORE_HOST} \
     -be_port=${IMPALA_BACKEND_PORT} \
     -fair_scheduler_allocation_path=${FAIR_SCHEDULER_ALLOCATION_PATH} \
-    -llama_site_path=${LLAMA_SITE_PATH}
+    -llama_site_path=${LLAMA_SITE_PATH} \
 	{% if security_enabled %}
     -kerberos_reinit_interval=60 \
     -principal=impala/{{current_host_name}}@{{realm_name}} \
